@@ -2,304 +2,114 @@
 <html lang="es">
 
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Chat con el Profesor Wilson Camacho — Asistente virtual académico de Física General.">
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ProAssist | Chat con Wilson Camacho</title>
 
-<title>ProAssist | Wilson Camacho</title>
+  <link rel="icon" href="assets/logo.png" type="image/png">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-
-<style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Poppins',sans-serif;
-}
-
-body{
-
-background:#f2f2f2;
-height:100vh;
-
-display:flex;
-justify-content:center;
-align-items:center;
-
-}
-
-.chat-container{
-
-width:90%;
-max-width:1100px;
-
-height:90vh;
-
-background:white;
-
-border-radius:25px;
-
-overflow:hidden;
-
-display:flex;
-
-box-shadow:0 20px 50px rgba(0,0,0,.1);
-
-}
-
-.sidebar{
-
-width:280px;
-
-background:#0f172a;
-
-color:white;
-
-padding:30px;
-
-display:flex;
-flex-direction:column;
-align-items:center;
-
-}
-
-.sidebar img{
-
-width:170px;
-height:170px;
-
-object-fit:cover;
-
-border-radius:50%;
-
-border:5px solid #dc2626;
-
-margin-bottom:20px;
-
-}
-
-.sidebar h2{
-
-font-family:'Abril Fatface',serif;
-
-font-size:30px;
-
-text-align:center;
-
-}
-
-.sidebar p{
-
-margin-top:15px;
-
-text-align:center;
-
-line-height:1.6;
-
-font-size:14px;
-
-}
-
-.chat-area{
-
-flex:1;
-
-display:flex;
-flex-direction:column;
-
-}
-
-.header{
-
-background:white;
-
-padding:20px 30px;
-
-border-bottom:1px solid #ddd;
-
-font-size:22px;
-font-weight:600;
-
-color:#0f172a;
-
-}
-
-.messages{
-
-flex:1;
-
-padding:30px;
-
-overflow-y:auto;
-
-display:flex;
-flex-direction:column;
-
-gap:15px;
-
-background:#fafafa;
-
-}
-
-.message{
-
-padding:14px 18px;
-
-max-width:75%;
-
-border-radius:18px;
-
-line-height:1.6;
-
-}
-
-.user{
-
-align-self:flex-end;
-
-background:#dc2626;
-
-color:white;
-
-}
-
-.bot{
-
-align-self:flex-start;
-
-background:#e5e7eb;
-
-color:#111827;
-
-}
-
-.input-area{
-
-padding:20px;
-
-background:white;
-
-border-top:1px solid #ddd;
-
-display:flex;
-
-gap:15px;
-
-}
-
-.input-area input{
-
-flex:1;
-
-padding:15px;
-
-border:none;
-
-border-radius:15px;
-
-background:#f3f4f6;
-
-font-size:15px;
-
-outline:none;
-
-}
-
-.input-area button{
-
-background:#0f172a;
-
-color:white;
-
-border:none;
-
-padding:15px 25px;
-
-border-radius:15px;
-
-cursor:pointer;
-
-font-weight:600;
-
-transition:.3s;
-
-}
-
-.input-area button:hover{
-
-background:#dc2626;
-
-}
-
-</style>
-
+  <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body class="chat-page">
 
-<div class="chat-container">
+  <div class="chat-wrapper">
 
-<div class="sidebar">
+    <!-- ======== SIDEBAR ======== -->
+    <aside class="chat-sidebar" id="chatSidebar">
 
-<img src="assets/wilson.png">
+      <a href="index.html" class="back-btn">← Volver al inicio</a>
 
-<h2>Wilson Camacho</h2>
+      <div class="sidebar-profile">
+        <div class="profile-img-wrapper">
+          <img src="assets/wilson.png" alt="Wilson Camacho">
+        </div>
+        <h2 class="sidebar-name">Wilson Camacho</h2>
+      </div>
 
-<p>
-Licenciado en Física.<br>
-Máster en Ciencias Físicas.<br>
-Candidato a Doctor en Ciencias e Ingeniería de la Computación.
-</p>
+      <div class="sidebar-credentials">
+        <span class="credential-badge">🎓 Lic. en Física</span>
+        <span class="credential-badge">📚 MSc. Ciencias Físicas</span>
+        <span class="credential-badge">🔬 PhD Candidate</span>
+      </div>
 
-</div>
+      <div class="sidebar-divider"></div>
 
-<div class="chat-area">
+      <div class="sidebar-info">
+        <p>
+          Asistente virtual del curso de Física General.
+          Pregúntame sobre temas del sílabo, evaluaciones, laboratorios y más.
+        </p>
+      </div>
 
-<div class="header">
+      <div class="sidebar-footer">
+        <img src="assets/logo.png" alt="ProAssist" class="sidebar-logo">
+        <span>ProAssist v1.0</span>
+      </div>
 
-PROASSIST | Asistente Virtual Académico
+    </aside>
 
-</div>
+    <!-- ======== CHAT MAIN ======== -->
+    <main class="chat-main">
 
-<div class="messages" id="messages">
+      <div class="chat-header">
+        <div class="chat-header-info">
+          <div class="status-dot"></div>
+          <div>
+            <h3>PROASSIST</h3>
+            <span class="status-label">Asistente Virtual Académico</span>
+          </div>
+        </div>
+        <button class="mobile-menu-btn" id="sidebarToggle" aria-label="Menú lateral">☰</button>
+      </div>
 
-<div class="message bot">
+      <div class="messages" id="messages">
 
-Hola. Soy el profesor Wilson Camacho.
+        <div class="message bot">
+          <div class="message-avatar">🤖</div>
+          <div class="message-bubble">
+            Hola. Soy el profesor Wilson Camacho.
+            Estoy aquí para ayudarte con consultas sobre Física General, evaluaciones,
+            tareas, laboratorios y temas del curso. ¿En qué puedo ayudarte?
+          </div>
+        </div>
 
-Estoy aquí para ayudarte con consultas sobre Física General, evaluaciones, tareas, laboratorios y temas del curso.
+        <div class="suggestions" id="suggestions">
+          <button class="chip" onclick="sendSuggestion('¿Cuáles son los temas del curso por semana?')">📚 Temas del curso</button>
+          <button class="chip" onclick="sendSuggestion('¿Cuáles son las evaluaciones del curso?')">📝 Evaluaciones</button>
+          <button class="chip" onclick="sendSuggestion('¿Qué laboratorios hay en el curso?')">🔬 Laboratorios</button>
+          <button class="chip" onclick="sendSuggestion('¿Cuándo son los exámenes parciales y final?')">📅 Exámenes</button>
+        </div>
 
-¿En qué puedo ayudarte?
+      </div>
 
-</div>
+      <div class="chat-input-area">
+        <div class="input-wrapper">
+          <input
+            type="text"
+            id="userInput"
+            placeholder="Escribe tu pregunta..."
+            autocomplete="off"
+          >
+          <button class="send-btn" id="sendBtn" onclick="sendMessage()" aria-label="Enviar">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+            </svg>
+          </button>
+        </div>
+      </div>
 
-</div>
+    </main>
 
-<div class="input-area">
+  </div>
 
-<input
-id="userInput"
-placeholder="Escribe tu pregunta..."
->
-
-<button onclick="sendMessage()">
-
-Enviar
-
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-<script src="script.js"></script>
+  <script src="script.js"></script>
 
 </body>
 

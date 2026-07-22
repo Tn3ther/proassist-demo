@@ -2,99 +2,294 @@
 <html lang="es">
 
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ProAssist — Asistente virtual académico con IA para el curso de Física General del profesor Wilson Camacho.">
 
-<title>ProAssist</title>
+  <title>ProAssist — Asistente IA Educativo</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="icon" href="assets/logo.png" type="image/png">
 
-<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="style.css">
-
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<header>
+  <!-- ======== NAVBAR ======== -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#inicio" class="nav-logo">
+        <img src="assets/logo.png" alt="ProAssist Logo">
+        <span>Pro<span class="accent">Assist</span></span>
+      </a>
 
-<div class="logo">
-ProAssit<span>.</span>
-</div>
+      <div class="nav-links" id="navLinks">
+        <a href="#inicio">Inicio</a>
+        <a href="#sobre">Sobre ProAssist</a>
+        <a href="#caracteristicas">Características</a>
+        <a href="#docente">Docente</a>
+        <a href="chat.html" class="nav-cta">Iniciar Chat →</a>
+      </div>
 
-<nav>
-<a href="#">Inicio</a>
-<a href="#">Sobre ProAssist</a>
-<a href="#">Docentes</a>
-<a href="#">Características</a>
-<a href="#">Contacto</a>
+      <button class="hamburger" id="hamburger" aria-label="Menú">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
 
-<button class="login-btn">
-Acceso
-</button>
-</nav>
+  <!-- ======== HERO ======== -->
+  <section class="hero" id="inicio">
+    <div class="hero-bg">
+      <div class="grid-pattern"></div>
+      <div class="hero-particles">
+        <span class="particle"></span>
+        <span class="particle"></span>
+        <span class="particle"></span>
+        <span class="particle"></span>
+        <span class="particle"></span>
+        <span class="particle"></span>
+        <span class="particle"></span>
+        <span class="particle"></span>
+      </div>
+    </div>
 
-</header>
+    <div class="hero-content">
+      <div class="hero-text">
+        <div class="hero-badge">🤖 Asistente IA Educativo</div>
 
-<section class="hero">
+        <h1>
+          Tu Asistente <span class="gradient-text">Inteligente</span>
+          para Física General
+        </h1>
 
-<div class="left">
+        <p>
+          Potenciado por inteligencia artificial, ProAssist te acompaña durante todo
+          el semestre con respuestas personalizadas sobre temas, evaluaciones,
+          laboratorios y más.
+        </p>
 
-<h1>
-Bienvenidos<span>.</span>
-</h1>
+        <div class="hero-actions">
+          <a href="chat.html" class="btn-primary" id="heroCta">
+            Hablar con el Profesor →
+          </a>
+          <a href="#sobre" class="btn-secondary">
+            Conocer más
+          </a>
+        </div>
 
-<h2>
-Mi nombre es <br>
-Wilson Camacho<span>.</span>
-</h2>
+        <div class="hero-stats">
+          <div class="stat-item">
+            <div class="stat-number">15+</div>
+            <div class="stat-label">Semanas de curso</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">24/7</div>
+            <div class="stat-label">Disponible siempre</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">IA</div>
+            <div class="stat-label">Personalizada</div>
+          </div>
+        </div>
+      </div>
 
-<div class="line"></div>
+      <div class="hero-visual">
+        <div class="professor-card">
+          <div class="professor-glow"></div>
+          <img src="assets/wilson.png" alt="Profesor Wilson Camacho" class="professor-img">
+          <h3>Wilson Camacho</h3>
+          <p class="professor-role">Profesor de Física General</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<p>
-Soy Licenciado en Física, Máster en Ciencias Físicas y candidato a Doctor en Ciencias e Ingeniería de la Computación.
-<br><br>
-Me apasiona enseñar y acompañarte durante tu formación universitaria.
-</p>
+  <!-- ======== ABOUT ======== -->
+  <section class="about" id="sobre">
+    <div class="section-container">
+      <div class="section-header reveal">
+        <span class="section-tag">Sobre el Proyecto</span>
+        <h2>¿Qué es <span class="gradient-text">ProAssist</span>?</h2>
+        <p>
+          Una herramienta de inteligencia artificial diseñada para potenciar
+          tu aprendizaje en el curso de Física General.
+        </p>
+      </div>
 
-<button onclick="window.location.href='chat.html'" class="chat-btn">
+      <div class="about-grid">
+        <div class="glass-card reveal">
+          <span class="card-icon">🎓</span>
+          <h3>Aprendizaje Personalizado</h3>
+          <p>
+            La IA se adapta a tus preguntas y te brinda respuestas específicas
+            sobre los temas del sílabo, prácticas y evaluaciones.
+          </p>
+        </div>
 
-Hablar con el Profesor →
+        <div class="glass-card reveal">
+          <span class="card-icon">⚡</span>
+          <h3>Respuestas Instantáneas</h3>
+          <p>
+            Disponible las 24 horas del día, los 7 días de la semana.
+            Consulta sobre cualquier tema del curso en cualquier momento.
+          </p>
+        </div>
 
-</button>
+        <div class="glass-card reveal">
+          <span class="card-icon">🔬</span>
+          <h3>Contenido del Curso</h3>
+          <p>
+            Acceso directo a información sobre laboratorios, trabajos de
+            investigación, exámenes parciales y la evaluación final.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<div class="features">
+  <!-- ======== FEATURES ======== -->
+  <section class="features-section" id="caracteristicas">
+    <div class="section-container">
+      <div class="section-header reveal">
+        <span class="section-tag">Temario</span>
+        <h2>Temas del <span class="gradient-text">Curso</span></h2>
+        <p>Explora los principales temas que cubrimos durante el semestre.</p>
+      </div>
 
-<div>
-<h3>IA Educativa</h3>
-<p>Aprendizaje personalizado</p>
-</div>
+      <div class="features-grid">
+        <div class="feature-card reveal">
+          <span class="feature-icon">📐</span>
+          <div class="feature-number">SEMANA 1</div>
+          <h3>Análisis Vectorial</h3>
+          <p>Magnitudes escalares y vectoriales, componentes rectangulares, producto escalar y vectorial.</p>
+        </div>
 
-<div>
-<h3>24/7</h3>
-<p>Disponible siempre</p>
-</div>
+        <div class="feature-card reveal">
+          <span class="feature-icon">🚀</span>
+          <div class="feature-number">SEMANAS 2-3</div>
+          <h3>Cinemática</h3>
+          <p>MRU, MRUV, caída libre, movimiento parabólico y movimiento circular uniforme.</p>
+        </div>
 
-<div>
-<h3>Personalizado</h3>
-<p>Según tu avance</p>
-</div>
+        <div class="feature-card reveal">
+          <span class="feature-icon">⚖️</span>
+          <div class="feature-number">SEMANA 4</div>
+          <h3>Leyes de Newton</h3>
+          <p>Diagramas de cuerpo libre, fuerzas de fricción, tensión y fuerza normal.</p>
+        </div>
 
-</div>
+        <div class="feature-card reveal">
+          <span class="feature-icon">⚡</span>
+          <div class="feature-number">SEMANAS 6-7</div>
+          <h3>Energía e Impulso</h3>
+          <p>Trabajo, energía cinética y potencial, conservación de energía, colisiones.</p>
+        </div>
 
-</div>
+        <div class="feature-card reveal">
+          <span class="feature-icon">🌊</span>
+          <div class="feature-number">SEMANAS 8-9</div>
+          <h3>Estática y Fluidos</h3>
+          <p>Equilibrio, torque, presión, principio de Pascal, Arquímedes y ecuación de Bernoulli.</p>
+        </div>
 
-<div class="right">
+        <div class="feature-card reveal">
+          <span class="feature-icon">🔌</span>
+          <div class="feature-number">SEMANAS 12-15</div>
+          <h3>Electromagnetismo y Ondas</h3>
+          <p>Electrostática, circuitos eléctricos, campos magnéticos, óptica y fibra óptica.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<div class="blob"></div>
+  <!-- ======== PROFESSOR ======== -->
+  <section class="professor-section" id="docente">
+    <div class="section-container">
+      <div class="section-header reveal">
+        <span class="section-tag">Docente</span>
+        <h2>Conoce al <span class="gradient-text">Profesor</span></h2>
+      </div>
 
-<img src="assets/wilson.png" alt="Wilson">
+      <div class="professor-content reveal">
+        <div class="professor-photo">
+          <img src="assets/wilson.png" alt="Profesor Wilson Camacho">
+        </div>
 
-</div>
+        <div class="professor-details">
+          <h2>Wilson Camacho</h2>
+          <p class="professor-title">Profesor de Física General</p>
 
-</section>
+          <p>
+            Me apasiona enseñar y acompañarte durante tu formación universitaria.
+            ProAssist es mi asistente virtual diseñado para ayudarte con todas tus
+            consultas académicas del curso.
+          </p>
+
+          <div class="credential-list">
+            <div class="credential-item">
+              <span class="cred-icon">🎓</span>
+              Licenciado en Física
+            </div>
+            <div class="credential-item">
+              <span class="cred-icon">📚</span>
+              Máster en Ciencias Físicas
+            </div>
+            <div class="credential-item">
+              <span class="cred-icon">🔬</span>
+              Candidato a Doctor en Ciencias e Ingeniería de la Computación
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== CTA ======== -->
+  <section class="cta-section">
+    <div class="section-container">
+      <div class="cta-content reveal">
+        <h2>¿Listo para <span class="gradient-text">comenzar</span>?</h2>
+        <p>
+          Pregunta sobre cualquier tema del sílabo, evaluaciones, laboratorios
+          o fechas importantes del curso.
+        </p>
+        <a href="chat.html" class="btn-primary">
+          Hablar con el Profesor →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== FOOTER ======== -->
+  <footer class="site-footer">
+    <div class="section-container">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <img src="assets/logo.png" alt="ProAssist">
+          <span>Pro<span class="accent">Assist</span></span>
+        </div>
+        <div class="footer-links">
+          <a href="#inicio">Inicio</a>
+          <a href="#sobre">Sobre</a>
+          <a href="#caracteristicas">Temas</a>
+          <a href="#docente">Docente</a>
+          <a href="chat.html">Chat</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        © 2025 ProAssist — Asistente Virtual Académico. Todos los derechos reservados.
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
 
 </body>
+
 </html>

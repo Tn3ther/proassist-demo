@@ -1,37 +1,223 @@
-function sendMessage() {
+// ============================================
+// ProAssist — Enhanced JavaScript
+// ============================================
 
-    const input =
-    document.getElementById("userInput");
+// --- DOM Ready ---
+document.addEventListener("DOMContentLoaded", () => {
+  initNavbar();
+  initScrollAnimations();
+  initHamburgerMenu();
+  initSidebarToggle();
+  initChatInput();
+});
 
-    const pregunta =
-    input.value.trim();
+// ============================
+// NAVBAR (scroll glassmorphism)
+// ============================
+function initNavbar() {
+  const navbar = document.getElementById("navbar");
+  if (!navbar) return;
 
-    if (!pregunta) return;
-
-    const messages =
-    document.getElementById("messages");
-
-    messages.innerHTML += `
-    <div class="message user">
-        ${pregunta}
-    </div>
-    `;
-
-    let respuesta =
-    generateResponse(pregunta.toLowerCase());
-
-    messages.innerHTML += `
-    <div class="message bot">
-        ${respuesta}
-    </div>
-    `;
-
-    input.value = "";
-
-    messages.scrollTop =
-    messages.scrollHeight;
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 50) {
+      navbar.classList.add("scrolled");
+    } else {
+      navbar.classList.remove("scrolled");
+    }
+  });
 }
 
+// ============================
+// SCROLL ANIMATIONS (reveal)
+// ============================
+function initScrollAnimations() {
+  const reveals = document.querySelectorAll(".reveal");
+  if (reveals.length === 0) return;
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("active");
+        }
+      });
+    },
+    {
+      threshold: 0.15,
+      rootMargin: "0px 0px -40px 0px",
+    }
+  );
+
+  reveals.forEach((el, i) => {
+    el.style.transitionDelay = `${i * 0.08}s`;
+    observer.observe(el);
+  });
+}
+
+// ============================
+// HAMBURGER MENU (mobile nav)
+// ============================
+function initHamburgerMenu() {
+  const hamburger = document.getElementById("hamburger");
+  const navLinks = document.getElementById("navLinks");
+  if (!hamburger || !navLinks) return;
+
+  hamburger.addEventListener("click", () => {
+    hamburger.classList.toggle("active");
+    navLinks.classList.toggle("open");
+  });
+
+  // Close menu when clicking a link
+  navLinks.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      hamburger.classList.remove("active");
+      navLinks.classList.remove("open");
+    });
+  });
+}
+
+// ============================
+// SIDEBAR TOGGLE (mobile chat)
+// ============================
+function initSidebarToggle() {
+  const toggle = document.getElementById("sidebarToggle");
+  const sidebar = document.getElementById("chatSidebar");
+  if (!toggle || !sidebar) return;
+
+  toggle.addEventListener("click", () => {
+    sidebar.classList.toggle("open");
+  });
+
+  // Close sidebar when clicking outside on mobile
+  document.addEventListener("click", (e) => {
+    if (
+      sidebar.classList.contains("open") &&
+      !sidebar.contains(e.target) &&
+      !toggle.contains(e.target)
+    ) {
+      sidebar.classList.remove("open");
+    }
+  });
+}
+
+// ============================
+// CHAT INPUT (Enter key)
+// ============================
+function initChatInput() {
+  const input = document.getElementById("userInput");
+  if (!input) return;
+
+  input.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      sendMessage();
+    }
+  });
+}
+
+// ============================
+// SEND MESSAGE (with typing)
+// ============================
+function sendMessage() {
+  const input = document.getElementById("userInput");
+  const pregunta = input.value.trim();
+
+  if (!pregunta) return;
+
+  const messages = document.getElementById("messages");
+
+  // Hide suggestions after first user message
+  const suggestions = document.getElementById("suggestions");
+  if (suggestions) {
+    suggestions.style.display = "none";
+  }
+
+  // Add user message
+  addMessage(pregunta, "user");
+
+  // Clear input
+  input.value = "";
+
+  // Show typing indicator
+  const typingEl = showTypingIndicator();
+
+  // Simulate response delay
+  const delay = 800 + Math.random() * 600;
+
+  setTimeout(() => {
+    // Remove typing indicator
+    typingEl.remove();
+
+    // Generate and add bot response
+    const respuesta = generateResponse(pregunta.toLowerCase());
+    addMessage(respuesta, "bot");
+  }, delay);
+}
+
+// ============================
+// SEND SUGGESTION (chip click)
+// ============================
+function sendSuggestion(text) {
+  const input = document.getElementById("userInput");
+  input.value = text;
+  sendMessage();
+}
+
+// ============================
+// ADD MESSAGE (helper)
+// ============================
+function addMessage(text, sender) {
+  const messages = document.getElementById("messages");
+
+  const avatar = sender === "bot" ? "🤖" : "👤";
+
+  const messageDiv = document.createElement("div");
+  messageDiv.className = `message ${sender}`;
+  messageDiv.innerHTML = `
+    <div class="message-avatar">${avatar}</div>
+    <div class="message-bubble">${text}</div>
+  `;
+
+  messages.appendChild(messageDiv);
+
+  // Smooth scroll to bottom
+  messages.scrollTo({
+    top: messages.scrollHeight,
+    behavior: "smooth",
+  });
+}
+
+// ============================
+// TYPING INDICATOR
+// ============================
+function showTypingIndicator() {
+  const messages = document.getElementById("messages");
+
+  const typing = document.createElement("div");
+  typing.className = "typing-indicator";
+  typing.innerHTML = `
+    <div class="message-avatar">🤖</div>
+    <div class="typing-dots">
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
+  `;
+
+  messages.appendChild(typing);
+
+  messages.scrollTo({
+    top: messages.scrollHeight,
+    behavior: "smooth",
+  });
+
+  return typing;
+}
+
+// ============================
+// GENERATE RESPONSE
+// (Original logic preserved)
+// ============================
 function generateResponse(question) {
 
     // PRESENTACIÓN
@@ -128,7 +314,8 @@ function generateResponse(question) {
     if (
         question.includes("tareas") ||
         question.includes("trabajos") ||
-        question.includes("evaluaciones")
+        question.includes("evaluaciones") ||
+        question.includes("temas")
     ) {
         return "Durante el semestre se desarrollarán prácticas calificadas, controles de lectura, informes de laboratorio, informes académicos, trabajos de investigación y exámenes parciales y final.";
     }
@@ -170,6 +357,15 @@ function generateResponse(question) {
         question.includes("gracias")
     ) {
         return "Con gusto. Estoy aquí para ayudarte durante todo el semestre. Te deseo muchos éxitos en el curso.";
+    }
+
+    // EXÁMENES (general)
+
+    if (
+        question.includes("examen") ||
+        question.includes("parcial")
+    ) {
+        return "Los exámenes del curso son: Examen Parcial I (semana 5), Examen Parcial II (semana 10) y Examen Final (semana 16). ¿Sobre cuál deseas más información?";
     }
 
     // RESPUESTA GENERAL
